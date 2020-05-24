@@ -29,8 +29,6 @@ namespace Assignment_2E
 
         string fileName;
         const int rows = 4;  //constant variable to hold number of rows
-        const int cols = 2;  //constant variable to hold number of columns
-        int[,] finesArray = new int[rows, cols]; //2D array to hold the fines read from file
         int[] sortArray = new int[rows]; //1D array to hold the fines
         private StreamReader fileReader;
         private void button1_Click(object sender, EventArgs e)
@@ -38,11 +36,13 @@ namespace Assignment_2E
             string readfile; // reading row 
             dlgOpen.Filter = "Text files (*.txt)|*.txt"; //setting filter to allow only text file
             if (dlgOpen.ShowDialog() == DialogResult.OK)
+            {
                 fileName = dlgOpen.FileName;
-            FileStream input = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            }
+
+          FileStream input = new FileStream(fileName, FileMode.Open, FileAccess.Read);
             //Set file from where data is read
             fileReader = new StreamReader(input);
-
             for (int i = 0; i < rows; i++)
             {
                 readfile = fileReader.ReadLine();// read a recod from the file
@@ -57,7 +57,6 @@ namespace Assignment_2E
             for (int i = 0; i < rows; i++)
             {
                 lstSorted.Items.Add(sortArray[i]); //Add content of the array to sorted list
-
             }
         }
 
